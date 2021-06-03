@@ -1,36 +1,38 @@
 import 'dart:html';
+import 'features/Feature.dart';
+
+import 'features/FeatureFactory.dart';
 
 int tableCount = 0;
 
 class TableModel {
   final TableElement table;
   late String _idPrefix;
+  late DivElement footer;
+  late List<Feature> features;
 
   int get columnCount => table.tBodies.first.rows.first.cells.length;
 
   TableModel(this.table) {
     this._idPrefix = 'tablizr-${++tableCount}';
     this._addFooter();
-    this._addHeader();
+
+    features = getFeatures(this);
+    for (var feature in features) {
+      feature.enhance();
+    }
   }
+
+  String createId(String id) => '$_idPrefix-footer';
 
   void _addFooter() {
     // Improvement: tfoot could already exist
-    var footer = table.createTFoot().addRow();
-    var cell1 = footer.addCell();
-    cell1.id = _idPrefix + '-footer';
+    var footerRow = table.createTFoot().addRow();
+    var cell1 = footerRow.addCell();
     cell1.colSpan = columnCount;
 
-    var elem = Element.html(
-      '''
-      <div>
-        <span id="#$_idPrefix-rowCount">0</span> records
-      </div>
-      ''',
-    );
-
-    cell1.children.add(elem);
+    footer = DivElement();
+    footer.id = createId('-footer');
+    cell1.children.add(footer);
   }
-
-  void _addHeader() {}
 }
