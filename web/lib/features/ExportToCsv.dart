@@ -1,7 +1,4 @@
 import 'dart:html';
-//import 'dart:io';
-import 'package:csv/csv.dart';
-
 import 'Feature.dart';
 import '../TableModel.dart';
 
@@ -15,15 +12,24 @@ class ExportToCsv extends Feature {
     a.text = 'CSV';
     a.onClick.listen((e) async {
       print('Downloading CSV');
-      var test = table.table.tHead?.rows.first.cells as List<TableCellElement>;
-      for (TableCellElement row in test) {}
+      var csv = "";
+      var header =
+          table.table.tHead?.rows.first.cells as List<TableCellElement>;
+      for (TableCellElement cell in header) {
+        csv += cell.innerText + ",";
+      }
 
-      //String csv = const ListToCsvConverter().convert(yourListOfLists);
-      //final filename = 'file.txt';
-      var file = await File(filename).writeAsString('some content');
-      //final pathOfTheFileToWrite = directory.path + "/myCsvFile.csv"
-      //File file = await File(pathOfTheFileToWrite);
-      //file.writeAsString(csv);
+      var rows = table.table.tBodies
+          .map((tbody) => tbody.rows)
+          .expand((element) => element);
+
+      for (TableRowElement row in rows) {
+        csv += "\n";
+        for (TableCellElement cell in row.cells) {
+          csv += cell.innerText + ",";
+        }
+      }
+      window.navigator.clipboard?.writeText(csv);
     });
     table.footer.children.add(a);
   }
