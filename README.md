@@ -4,7 +4,7 @@ Tablizr
 ## Development
 
 ```ps1
-webdev server --build
+webdev serve --debug --auto=refresh
 ```
 
 ## Packaging
