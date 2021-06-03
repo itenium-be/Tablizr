@@ -9,11 +9,12 @@ class RowCount extends Feature {
     var elem = Element.html(
       '''
       <div>
-        <span id="#${table.createId('rowCount')}">0</span> records
+        <span id="#${table.createId('rowCount')}">Total rows: ${table.table.rows.length}</span> records
       </div>
       ''',
     );
 
     table.footer.children.add(elem);
+    
   }
 }
