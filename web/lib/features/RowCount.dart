@@ -9,12 +9,18 @@ class RowCount extends Feature {
     var elem = Element.html(
       '''
       <div>
-        <span id="#${table.createId('rowCount')}">Total rows: ${table.table.rows.length}</span> records
+        <span id="#${table.createId('rowCount')}">Total rows: ${calculateBodyRowsOfTable()}</span> records
       </div>
       ''',
     );
 
     table.footer.children.add(elem);
-    
+  }
+
+  int calculateBodyRowsOfTable() {
+    // get rows of all possible table bodies, sum these numbers
+    return table.table.tBodies
+        .map((body) => body.rows.length)
+        .reduce((value, element) => value + element);
   }
 }
