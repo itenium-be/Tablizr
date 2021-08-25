@@ -1,9 +1,13 @@
-.wikitable > tr > th, .wikitable > * > tr > th {
+.wikitable > tr > th,
+.wikitable > * > tr > th {
   background-color: #eaecf0;
   text-align: center;
 }
 
-.wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+.wikitable > tr > th,
+.wikitable > tr > td,
+.wikitable > * > tr > th,
+.wikitable > * > tr > td {
   border: 1px solid #a2a9b1;
   padding: 0.2em 0.4em;
 }
@@ -16,7 +20,14 @@
   border-collapse: collapse;
 }
 
-.wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+.wikitable > tr > th,
+.wikitable > tr > td,
+.wikitable > * > tr > th,
+.wikitable > * > tr > td {
   border: 1px solid #a2a9b1;
   padding: 0.2em 0.4em;
+}
+
+.highlighted {
+  background-color: powderblue !important;
 }
