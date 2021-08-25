@@ -35,4 +35,7 @@ class TableModel {
     footer.id = createId('-footer');
     cell1.children.add(footer);
   }
+
+  List<TableRowElement> get bodyRows =>
+      table.tBodies.map((e) => e.rows).expand((i) => i).toList();
 }
