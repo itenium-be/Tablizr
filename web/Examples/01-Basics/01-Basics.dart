@@ -115,13 +115,9 @@ int LearnAboutFunctions(String input, [List<num> lst = const [1, 2, 3]]) {
 void withNamedParameters({required String key, int? value = 0}) {}
 void withOptionalParam(int start, [int? end = 999]) {}
 
-extension NumberParsing on String {
+extension StringExtensions on String {
   int parseInt() {
     return int.parse(this);
-  }
-
-  int _specificToLibrary() {
-    return 42;
   }
 }
 

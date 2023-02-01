@@ -42,7 +42,7 @@ class Point3D extends Point {
 }
 
 // Abstract classes can be used as an "interface"
-// class Point3D implements Point {}
+// class Person implements AbstractAudit {}
 
 // Or use a mixin
 mixin Audit {

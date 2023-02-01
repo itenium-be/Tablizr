@@ -15,6 +15,7 @@ class TableModel {
 
   TableModel(this.table) {
     this._idPrefix = 'tablizr-${++tableCount}';
+    this.table.classes.add(_idPrefix);
     this._addFooter();
 
     features = getFeatures(this);

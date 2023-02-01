@@ -9,6 +9,7 @@ environment:
 
 # Add package?
 # dart pub add characters
+# dart pub get
 dependencies: 
   characters: ^1.1.0
 
